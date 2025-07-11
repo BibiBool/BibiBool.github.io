@@ -1,23 +1,52 @@
+:root {
+    /* --- Font Variables --- */
+    --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-headings: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+    /* --- Core Brand Colors --- */
+    --color-brand-primary: #004B8D;        /* Deep Blue: For footer, main H2 headings */
+    --color-brand-accent: #0078D4;         /* Vibrant Blue: For links, buttons, icons, H3 headings */
+
+    /* --- Text Colors --- */
+    --color-text-dark: #333333;            /* Standard dark text */
+    --color-text-light: #ffffff;           /* White text (for dark backgrounds) */
+
+    /* --- Background Colors --- */
+    --color-background-page: #f4f4f4;      /* Light gray background for the overall page */
+    --color-background-box-1: #ffffff;     /* White background for content boxes/sections */
+    --color-background-box-2: #efefef;     /* Light grey background for content boxes/sections */
+    --color-background-box-3: #5236ab;     /* Deep purple background for content boxes/sections (use with --color-text-light) */
+    --color-background-project-item: #f9f9f9; /* Slightly off-white for project items */
+
+    /* --- Border Colors --- */
+    --color-border-light: #eeeeee;         /* Light gray borders/dividers */
+    --color-border-dark: #dddddd;          /* Slightly darker gray borders */
+
+    /* --- Derived Colors & Gradients --- */
+    --color-brand-accent-hover: #0063af;   /* A darker shade of the vibrant blue for hover effects */
+    --gradient-header-background: linear-gradient(to right, #e41937, #5336ab); /* Gradient for header */
+}
+
 /* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--color-background-page);
+    color: var(--color-text-dark);
 }
 
 /* Header and Navigation */
 header {
-    background: #333;
-    color: #fff;
+    background: var(--gradient-header-background); /* Using the specific gradient variable */
+    color: var(--color-text-light);
     padding: 1rem 0;
     text-align: center;
 }
 
 nav a {
-    color: #fff;
+    color: var(--color-text-light);
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
@@ -29,49 +58,47 @@ nav a:hover {
 
 /* --- Global Main Content Wrapper (Applies to all pages using default layout) --- */
 .page-main-content {
-    padding: 20px; /* Adds consistent padding around the content block */
-    max-width: 1200px; /* Sets a maximum width for content */
-    margin: 20px auto; /* Centers the content block and provides vertical spacing */
-    /* Individual sections/boxes will now have their own background/shadow */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 /* --- Layout Container (specifically for the homepage's two-column layout) --- */
 .container {
-    display: flex; /* Enables Flexbox for sidebar and content */
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-    gap: 20px; /* Space between sidebar and content */
-    /* No need for max-width or margin here, as .page-main-content handles it */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* --- Sidebar Styles --- */
 .sidebar {
-    flex: 0 0 280px; /* Fixed width for sidebar, no shrinking/growing */
-    max-width: 100%; /* Allows it to take full width on smaller screens */
+    flex: 0 0 280px;
+    max-width: 100%;
 }
 
 .profile-box {
     padding: 20px;
-    background: #fff;
+    /* background will be set by specific background-box-X class in HTML */
     text-align: center;
 }
 
 .profile-pic {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 15px;
-    border: 3px solid #007bff; /* Optional: adds a border around the pic */
+    border: 3px solid var(--color-brand-accent);
 }
 
 .profile-box h2 {
     margin-top: 10px;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--color-text-dark);
 }
 
 .profile-box .function {
-    color: #666;
+    color: #666; /* Keep as is or make a variable if needed often */
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -87,7 +114,7 @@ nav a:hover {
 }
 
 .contact-info a {
-    color: #007bff;
+    color: var(--color-brand-accent);
     text-decoration: none;
 }
 
@@ -97,14 +124,14 @@ nav a:hover {
 
 /* --- Icons Spacing --- */
 .contact-info ul li i {
-    margin-right: 8px; /* Space between icon and text */
-    color: #007bff; /* Optional: style the icon color */
+    margin-right: 8px;
+    color: var(--color-brand-accent);
 }
 
 /* --- Content Area Styles (for homepage - takes remaining space) --- */
 .content-area {
-    flex: 1; /* Allows content area to take remaining space */
-    min-width: 0; /* Prevents content from overflowing */
+    flex: 1;
+    min-width: 0;
 }
 
 /* Common Styles for all content boxes (Sections, Project Items) */
@@ -113,23 +140,23 @@ nav a:hover {
 }
 
 .border-radius {
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
 }
 
 section {
-    margin-bottom: 20px; /* Space between each section */
-    padding: 20px; /* Padding inside each section's box */
-    background: #fff; /* Individual sections have their own white background */
+    margin-bottom: 20px;
+    padding: 20px;
+    /* background will be set by specific background-box-X class in HTML */
 }
 
-/* Ensures no extra margin at the bottom of the last section in a sequence */
 section:last-of-type {
     margin-bottom: 0;
 }
 
 section h2 {
-    color: #0056b3;
-    border-bottom: 2px solid #eee;
+    font-family: var(--font-headings);
+    color: var(--color-brand-primary); /* Uses the solid deep blue, not the gradient */
+    border-bottom: 2px solid var(--color-border-light);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -143,10 +170,10 @@ section h2 {
 }
 
 .project-item {
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-border-dark);
     padding: 15px;
     text-align: center;
-    background: #f9f9f9;
+    background: var(--color-background-project-item);
     transition: transform 0.2s;
 }
 
@@ -162,11 +189,13 @@ section h2 {
 }
 
 .project-item h3 {
+    font-family: var(--font-headings);
     margin: 10px 0;
-    color: #333;
+    color: var(--color-text-dark);
 }
 
 .project-item p {
+    font-family: var(--font-body);
     font-size: 0.9em;
     color: #666;
 }
@@ -178,30 +207,31 @@ section h2 {
 
 /* Resume Button */
 .button {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--color-brand-accent);
+    color: var(--color-text-light);
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
     margin-top: 10px;
+    display: inline-block;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: var(--color-brand-accent-hover);
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #333;
-    color: #fff;
+    background:var(--gradient-header-background); /* Using the specific gradient variable */
+    color: var(--color-text-light);
     margin-top: 40px;
 }
 
 /* --- Resume Page Specific Styles --- */
 .resume-intro {
+    font-family: var(--font-body);
     font-size: 1.1em;
     margin-bottom: 25px;
     color: #555;
@@ -211,7 +241,7 @@ footer {
 .resume-section {
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-border-light);
 }
 
 .resume-section:last-child {
@@ -221,12 +251,14 @@ footer {
 }
 
 .resume-section h3 {
-    color: #007bff;
+    font-family: var(--font-headings);
+    color: var(--color-brand-accent);
     margin-bottom: 15px;
 }
 
 .resume-section h4 {
-    color: #333;
+    font-family: var(--font-headings);
+    color: var(--color-text-dark);
     margin-top: 15px;
     margin-bottom: 8px;
     font-size: 1.1em;
@@ -239,26 +271,47 @@ footer {
 }
 
 .resume-section li {
+    font-family: var(--font-body);
     margin-bottom: 8px;
 }
+
+/* --- NEW Background Box Utility Classes --- */
+.background-box-1 {
+    background: var(--color-background-box-1);
+}
+
+.background-box-2 {
+    background: var(--color-background-box-2);
+}
+
+.background-box-3 {
+    background: var(--color-background-box-3);
+    /* Remember to pair this with .text-light-on-dark for readability if needed */
+}
+
+/* --- NEW Text Color Utility for Dark Backgrounds --- */
+.text-light-on-dark {
+    color: var(--color-text-light) !important; /* Use !important to ensure it overrides other text colors */
+}
+
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     .page-main-content {
-        padding: 10px; /* Reduce padding on small screens for better use of space */
-        margin: 10px auto; /* Reduce vertical margin on small screens */
+        padding: 10px;
+        margin: 10px auto;
     }
     .container {
-        flex-direction: column; /* Stack sidebar and content vertically */
+        flex-direction: column;
     }
 
     .sidebar {
-        flex: none; /* Remove fixed width */
-        width: 100%; /* Take full width on small screens */
-        margin-bottom: 20px; /* Space between sidebar and content */
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .profile-box {
-        border-radius: 8px; /* Ensure border-radius is applied on small screens too */
+        border-radius: 8px;
     }
 }
