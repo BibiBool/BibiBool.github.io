@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Data Engineer Portfolio</title> <link rel="stylesheet" href="assets/css/style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sem Dorinvil - Data Engineer Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,20 +18,39 @@
     <main class="page-main-content">
         <div class="container">
             <aside class="sidebar">
-                <div class="profile-box box-shadow border-radius">
-                    <img src="assets/images/profile.jpg" alt="Your Profile Picture" class="profile-pic"> <h2>Your Name</h2>
+                <div class="profile-box box-shadow border-radius background-box-1"> <img src="assets/images/profile.jpg" alt="Your Profile Picture" class="profile-pic">
+                    <h2>Sem Bruel Dorinvil</h2>
                     <p class="function">Data Engineer</p>
                     <div class="contact-info">
-                        <h3>Contact Me</h3>
                         <ul>
-                            <li><strong>Email:</strong> <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> your-email@example.com</a></li> <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/your-linkedin-username" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/your-linkedin-username</a></li> <li><strong>GitHub:</strong> <a href="https://github.com/your-github-username" target="_blank"><i class="fab fa-github"></i> github.com/your-github-username</a></li> </ul>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div class="contact-text">
+                                    <span class="contact-label-text">Email:</span>
+                                    <a href="mailto:dorinvilbruel@gmail.com" class="contact-link">dorinvilbruel@gmail.com</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fab fa-linkedin"></i>
+                                <div class="contact-text">
+                                    <span class="contact-label-text">LinkedIn:</span>
+                                    <a href="https://linkedin.com/in/sembrueldorinvil" target="_blank" class="contact-link">sembrueldorinvil</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fab fa-github"></i>
+                                <div class="contact-text">
+                                    <span class="contact-label-text">GitHub:</span>
+                                    <a href="https://github.com/BibiBool" target="_blank" class="contact-link">github.com/BibiBool</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </aside>
 
             <div class="content-area">
-                <section id="about-me" class="box-shadow border-radius">
-                    <h2>About Me</h2>
+                <section id="about-me" class="box-shadow border-radius background-box-1"> <h2>About Me</h2>
                     <p>I am a Data Engineer with a strong foundation in analytical thinking cultivated through my background as a Civil Engineer and 5 years of experience as a Project Management Officer. </p>
                     <p>I am passionate about the data world and most importantly, I like building robust data pipelines that will bring value to the Business.</p>
 
@@ -37,26 +58,43 @@
                     <ul>
                         <li><strong>Programming Languages:</strong> Python, SQL</li>
                         <li><strong>Databases:</strong> PostgreSQL, MongoDB, Redshift</li>
-                        <li><strong>Cloud Platforms:</strong> AWS (S3, EC2, Lambda, Glue, EMR)</li>
-                        <li><strong>Data Orchestration/ETL:</strong> Apache Airflow, dbt</li>
-                        <li><strong>Big Data Technologies:</strong> Apache Spark, Apache Kafka</li>
+                        <li><strong>Cloud Platforms:</strong> AWS (S3, EC2, Lambda, Glue)</li>
+                        <li><strong>Data Orchestration/ETL:</strong> Apache Airflow</li>
+                        <li><strong>Big Data Technologies:</strong> Apache Spark</li>
                         <li><strong>Data Analytics:</strong> Pandas, Numpy, Matplotlib, Metabase</li>
                         <li><strong>Version Control:</strong> Git, GitHub</li>
                         <li><strong>Tools & Others:</strong> Docker, Terraform, Linux, Bash Scripting</li>
                     </ul>
                 </section>
 
-                <section id="my-projects" class="box-shadow border-radius">
-                    <h2>My Projects</h2>
+                <section id="my-projects" class="box-shadow border-radius background-box-2"> <h2>My Projects</h2>
                     <div class="project-grid">
                         <div class="project-item border-radius">
-                            <a href="projects/project-1.html"> <img src="assets/images/project-1-thumbnail.jpg" alt="Project 1 Thumbnail"> <h3>Project Title 1</h3>
-                                <p>A brief description of Project 1, highlighting its key outcome or technology.</p>
+                            <a href="projects/cloudwatch-log-analysis.html">
+                                <img src="assets/images/project-1-thumbnail.jpg" alt="Project 1 Thumbnail">
+                                <h3>Cloudwatch Log Analysis</h3>
+                                <p>Docker, Airflow, Postgres, Metabase.</p>
                             </a>
                         </div>
                         <div class="project-item border-radius">
-                            <a href="projects/project-2.html"> <img src="assets/images/project-2-thumbnail.jpg" alt="Project 2 Thumbnail"> <h3>Project Title 2</h3>
-                                <p>A brief description of Project 2, highlighting its key outcome or technology.</p>
+                            <a href="projects/project-2.html">
+                                <img src="assets/images/project-2-thumbnail.jpg" alt="Project 2 Thumbnail">
+                                <h3>Project Title 2</h3>
+                                <p>Docker, Airflow, Pyspark, Postgres, Metabase..</p>
+                            </a>
+                        </div>
+                         <div class="project-item border-radius">
+                            <a href="projects/project-3.html">
+                                <img src="assets/images/project-2-thumbnail.jpg" alt="Project 3 Thumbnail">
+                                <h3>Project Title 3</h3>
+                                <p>Docker, Airflow, Kafka, Pyspark, Postgres, Metabase..</p>
+                            </a>
+                        </div>
+                        <div class="project-item border-radius">
+                            <a href="projects/project-3.html">
+                                <img src="assets/images/project-2-thumbnail.jpg" alt="Project 4 Thumbnail">
+                                <h3>Project Title 4</h3>
+                                <p>Terraform, EC2, Airflow, S3, Glue, EMR, Metabase.</p>
                             </a>
                         </div>
                     </div>
@@ -65,9 +103,9 @@
         </div>
     </main>
 
-    <footer class="">
+    <footer>
         <p>&copy; 2025 Sem Bruel Dorinvil - Data Engineer Portfolio</p>
         <p>Built with HTML & CSS</p>
     </footer>
-    </body>
+</body>
 </html>
