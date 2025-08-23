@@ -2,6 +2,7 @@
 
 ## Architecure diagram
 
+```mermaid
 graph TD;
     subgraph Data Flow
         A[CloudFront S3 Logs] --> B(Airflow DAG);
