@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Cloudwatch Log Analysis - Sem Dorinvil</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Project-specific styles can go here or in a new projects.css if many project pages */
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--color-background-box-2);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow); /* Re-using existing shadow if defined, or define here */
+        }
+
+        .project-header h1 {
+            color: var(--color-brand-primary);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .project-header p.tech-stack-summary {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .project-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--color-background-box-1);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow); /* Ensure consistency */
+        }
+
+        .project-section h2 {
+            font-family: var(--font-headings);
+            color: var(--color-brand-primary);
+            border-bottom: 2px solid var(--color-border-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .project-section h3 {
+            font-family: var(--font-headings);
+            color: var(--color-brand-accent);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .project-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-section pre {
+            background-color: #f0f0f0;
+            border: 1px solid var(--color-border-dark);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin: 20px 0;
+        }
+
+        .project-section ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .project-section ol {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .project-section li {
+            margin-bottom: 8px;
+        }
+
+        .project-action-buttons {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .project-action-buttons .button {
+            margin: 0 10px;
+        }
+
+        /* Responsive adjustments for project page */
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2em;
+            }
+            .project-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <main class="page-main-content">
+        <div class="project-header">
+            <h1>Cloudwatch Log Analysis Pipeline</h1>
+            <p class="tech-stack-summary">
+                A robust data pipeline for extracting, transforming, and loading fake Cloudwatch logs into a PostgreSQL database,
+                and visualizing key insights using Metabase. Built with Docker, Apache Airflow, PostgreSQL, and Metabase.
+            </p>
+        </div>
+
+        <div class="content-area"> <section class="project-section background-box-1">
+                <h2>1. Project Overview & Problem Statement</h2>
+                <p>
+                    In today's cloud-native environments, applications generate vast amounts of log data. While invaluable for monitoring and debugging,
+                    these raw logs are often unstructured and difficult to analyze efficiently. This project addresses the challenge of making
+                    Cloudwatch logs actionable by building an end-to-end data pipeline that transforms raw log data into queryable information for 
+                    business insights and operational intelligence.
+                </p>
+                <p>
+                    The goal was to create an automated, scalable, and reproducible solution that extracts log data, processes it,
+                    stores it in a relational database, and provides a user-friendly dashboard for analysis.
+                </p>
+            </section>
+
+            <section class="project-section background-box-2">
+                <h2>2. Solution Architecture</h2>
+                <p>
+                    The pipeline is orchestrated entirely within Docker containers, ensuring environment consistency and ease of deployment.
+                    Here's a breakdown of the architecture:
+                </p>
+                
+                <h3>Architecture Diagram</h3>
+                <img src="../assets/images/cloudwatch-log-analysis-architecture.png" alt="Architecture Diagram of Cloudwatch Log Analysis Project">
+                <figcaption style="text-align: center; font-style: italic; font-size: 0.9em; color: #666;">
+                    Diagram showcasing the data flow from Cloudwatch logs through Airflow, PostgreSQL, to Metabase.
+                </figcaption>
+
+                <h3>Components Used:</h3>
+                <ul>
+                    <li><strong>Docker & Docker Compose:</strong> Containerization for all services (Airflow, PostgreSQL,PgAdmin Metabase, custom log generator). Ensures easy setup and consistent environments.</li>
+                    <li><strong>Apache Airflow 3.0.2:</strong> Workflow orchestration to schedule and manage the log extraction, transformation, and loading (ETL) processes. Utilized for its robust scheduling capabilities and task dependency management.</li>
+                    <li><strong>Python (with Boto3):</strong> Custom scripts for interacting with AWS Cloudwatch Logs API to extract data.</li>
+                    <li><strong>PostgreSQL:</strong> Relational database to store the structured log data. Chosen for its reliability, ACID compliance, and strong support for analytical queries.</li>
+                    <li><strong>Metabase:</strong> Business Intelligence tool used to create interactive dashboards and visualizations from the data stored in PostgreSQL, allowing for easy exploration of log insights.</li>
+                </ul>
+            </section>
+
+            <section class="project-section background-box-1">
+                <h2>3. Implementation Details & Data Flow</h2>
+                <p>The pipeline operates in several key stages, orchestrated by Airflow:</p>
+
+                <ol>
+                    <li>
+                        <h3>Log Generation (Airflow + Python script):</h3>
+                        <p>
+                            An Airflow DAG triggers a Python script that uses the AWS Boto3 library to connect to Cloudwatch Logs.
+                            It pulls log events from specified log groups and streams, handling pagination and potential rate limits.
+                            The raw JSON log data is then stored temporarily or directly processed.
+                        </p>
+                        <pre><code>
+# Example Airflow Task (simplified)
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+
+def extract_logs(**kwargs):
+    # Logic to connect to Cloudwatch, pull logs
+    # Example: filter by time range, specific log stream
+    print("Extracting logs from Cloudwatch...")
+    # Save raw logs to a staging area or pass to XCom for next task
+
+extract_task = PythonOperator(
+    task_id='extract_cloudwatch_logs',
+    python_callable=extract_logs,
+    dag=dag,
+)
+                        </code></pre>
+                    </li>
+                    <li>
+                        <h3>Data Transformation (Airflow + Python/Pandas):</h3>
+                        <p>
+                            Raw log entries, often semi-structured (e.g., JSON strings within log messages), are parsed and
+                            transformed into a clean, tabular format. This involves:
+                        </p>
+                        <ul>
+                            <li>Parsing JSON strings from log messages.</li>
+                            <li>Extracting relevant fields (e.g., timestamp, log level, message, request ID).</li>
+                            <li>Handling missing values and data type conversions.</li>
+                            <li>Normalizing data for efficient storage and querying in PostgreSQL.</li>
+                        </ul>
+                        <pre><code>
+# Example Python transformation logic (conceptual)
+import pandas as pd
+import json
+
+def transform_logs(raw_logs):
+    processed_data = []
+    for log_entry in raw_logs:
+        try:
+            parsed_message = json.loads(log_entry['message'])
+            processed_data.append({
+                'timestamp': log_entry['timestamp'],
+                'log_level': parsed_message.get('level', 'INFO'),
+                'request_id': parsed_message.get('requestId'),
+                'event_message': parsed_message.get('message'),
+                # ... other fields
+            })
+        except json.JSONDecodeError:
+            # Handle non-JSON logs or errors
+            processed_data.append({
+                'timestamp': log_entry['timestamp'],
+                'log_level': 'UNKNOWN',
+                'request_id': None,
+                'event_message': log_entry['message'],
+            })
+    return pd.DataFrame(processed_data)
+                        </code></pre>
+                    </li>
+                    <li>
+                        <h3>Data Loading (Airflow + Psycopg2/SQL Alchemy):</h3>
+                        <p>
+                            The transformed data is loaded into a dedicated table in the PostgreSQL database.
+                            Airflow's PostgresHook or Python's `psycopg2` library is used to manage the database connection and execute
+                            INSERT/UPSERT operations.
+                        </p>
+                        <pre><code>
+# Example Airflow task for loading (conceptual)
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+def load_data_to_postgres(df):
+    pg_hook = PostgresHook(postgres_conn_id='postgres_default')
+    # Example: Use pandas to_sql or construct raw INSERT statements
+    df.to_sql('cloudwatch_logs', pg_hook.get_sqlalchemy_engine(), if_exists='append', index=False)
+    print("Data loaded to PostgreSQL successfully.")
+                        </code></pre>
+                    </li>
+                    <li>
+                        <h3>Data Visualization (Metabase):</h3>
+                        <p>
+                            Metabase is connected to the PostgreSQL database. Dashboards are built to provide actionable insights,
+                            such as:
+                        </p>
+                        <ul>
+                            <li>Log volume over time.</li>
+                            <li>Distribution of log levels (INFO, WARN, ERROR).</li>
+                            <li>Error rate tracking.</li>
+                            <li>Filtering logs by specific keywords or request IDs.</li>
+                        </ul>
+                        <img src="../assets/images/metabase-dashboard-screenshot.png" alt="Metabase Dashboard Screenshot">
+                        <figcaption style="text-align: center; font-style: italic; font-size: 0.9em; color: #666;">
+                            Screenshot of a Metabase dashboard visualizing log data.
+                        </figcaption>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="project-section background-box-2">
+                <h2>4. Key Challenges & Solutions</h2>
+                <ul>
+                    <li>
+                        <strong>Dynamic Cloudwatch Log Groups/Streams:</strong> Cloudwatch logs can be highly dynamic.
+                        Solution involved parameterizing Airflow DAGs to accept log group patterns and dynamically
+                        discover log streams using Boto3, ensuring the pipeline can adapt to new application deployments.
+                    </li>
+                    <li>
+                        <strong>Handling Unstructured/Varied Log Formats:</strong> Not all logs are perfectly structured JSON.
+                        Implemented robust error handling and fallback mechanisms in the Python transformation script
+                        to gracefully process malformed or non-JSON log entries, preventing pipeline failures.
+                    </li>
+                    <li>
+                        <strong>Idempotency and Data Duplication:</strong> To ensure data integrity on re-runs,
+                        implemented UPSERT (UPDATE or INSERT) logic when loading data into PostgreSQL,
+                        using a unique identifier (e.g., `event_id` or `timestamp + message_hash`) to prevent duplicate records.
+                    </li>
+                    <li>
+                        <strong>Airflow Version 3.0.2 Specifics:</strong> Familiarized myself with the latest Airflow features,
+                        operators, and best practices for version 3.0.2, leveraging new capabilities for improved DAG authoring and dependency management.
+                    </li>
+                </ul>
+            </section>
+
+            <section class="project-section background-box-1">
+                <h2>5. Results and Impact</h2>
+                <ul>
+                    <li>
+                        <strong>Automated Log Intelligence:</strong> Transformed raw, noisy Cloudwatch logs into a clean, structured dataset, enabling
+                        automated monitoring and analysis without manual intervention.
+                    </li>
+                    <li>
+                        <strong>Operational Efficiency:</strong> Provided development and operations teams with real-time insights into application
+                        behavior, facilitating faster debugging and incident response.
+                    </li>
+                    <li>
+                        <strong>Business Value:</strong> Metabase dashboards enabled non-technical stakeholders to explore application usage patterns,
+                        error trends, and performance metrics, driving informed decisions.
+                    </li>
+                    <li>
+                        <strong>Reproducible Environment:</strong> Docker setup ensures the entire pipeline can be spun up and torn down
+                        consistently across different environments, aiding in development, testing, and deployment.
+                    </li>
+                </ul>
+            </section>
+
+            <section class="project-section background-box-2">
+                <h2>6. Future Enhancements</h2>
+                <ul>
+                    <li>Implement a CDC (Change Data Capture) mechanism for incremental log processing to optimize ETL runtime.</li>
+                    <li>Integrate with a queuing system (e.g., Kafka) for real-time log ingestion before batch processing.</li>
+                    <li>Expand data visualization to include anomaly detection on log patterns.</li>
+                    <li>Migrate to a cloud-native data warehouse (e.g., AWS Redshift, Snowflake) for larger scale analytics.</li>
+                </ul>
+            </section>
+
+            <div class="project-action-buttons">
+                <a href="https://github.com/BibiBool/your-cloudwatch-log-analysis-repo" target="_blank" class="button">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="../index.html#my-projects" class="button">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sem Bruel Dorinvil - Data Engineer Portfolio</p>
+        <p>Built with HTML & CSS</p>
+    </footer>
+</body>
+</html>
