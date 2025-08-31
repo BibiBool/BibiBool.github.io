@@ -13,7 +13,7 @@ graph TD;
     subgraph Infrastructure
         E[Docker] --> F(Airflow: Webserver, Scheduler, Worker);
         F --> G(PostgreSQL: Database Service);
-        F --> H(Metabase: Dashboard Service);
+        G --> H(Metabase: Dashboard Service);
     end
 
     subgraph Data & Analytics
